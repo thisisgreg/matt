@@ -1,18 +1,18 @@
 //smooth scroll script
-			$(function() {
-			  $('a[href*=#]:not([href=#])').click(function() {
-			    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-			      var target = $(this.hash);
-			      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-			      if (target.length) {
-			        $('html,body').animate({
-			          scrollTop: target.offset().top
-			        }, 1000);
-			        return false;
-			      }
-			    }
-			  });
-			});
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
 
 //slide toggle video loading script
 //$(function() {
@@ -24,41 +24,58 @@
 //});
 
 $(function() {
-		$("#thumb1").click(function() {
-			$(".video").slideUp(500, 'linear', function() {
-				$("#vid1").slideDown(500, 'linear');
-			});
-		});
-		$("#thumb2").click(function() {
-			$(".video").slideUp(500, 'linear', function() {
-				$("#vid2").slideDown(500, 'linear');
-			});
-		});
-		$("#thumb3").click(function() {
-			$(".video").slideUp(500, 'linear', function() {
-				$("#vid3").slideDown(500, 'linear');
-			});
-		});
-		$("#thumb4").click(function() {
-			$(".video").slideUp(500, 'linear', function() {
-				$("#vid4").slideDown(500, 'linear');
-			});
-		});
-		$("#thumb5").click(function() {
-			$(".video").slideUp(500, 'linear', function() {
-				$("#vid5").slideDown(500, 'linear');
-			});
-		});	
+    $("li.vid-thumb").click(function(){
+        //close current vid (slide up, set iframe src to null, set back to src)        
+        $('div.video:visible').slideUp(500, 'linear', function() {
+            var url = $(this).children('iframe').attr('src');
+            $(this).children('iframe').attr('src', '');
+            $(this).children('iframe').attr('src', url);
+        });
+        
+        //get video # from id of clicked thumb
+        var num = $(this).attr('id').split('_')[1];
+        
+        //open clicked vid (slide down)
+        $('div#vid_'+num).slideDown(500,'linear');
+    });
+    
+    /*      
+    $("#thumb_1").click(function() {
+        $(".video").slideUp(500, 'linear', function() {
+            $("#vid_1").slideDown(500, 'linear');
+        });
+    });
+    $("#thumb_2").click(function() {
+        $(".video").slideUp(500, 'linear', function() {
+            $("#vid_2").slideDown(500, 'linear');
+        });
+    });
+    $("#thumb_3").click(function() {
+        $(".video").slideUp(500, 'linear', function() {
+            $("#vid_3").slideDown(500, 'linear');
+        });
+    });
+    $("#thumb_4").click(function() {
+        $(".video").slideUp(500, 'linear', function() {
+            $("#vid_4").slideDown(500, 'linear');
+        });
+    });
+    $("#thumb_5").click(function() {
+        $(".video").slideUp(500, 'linear', function() {
+            $("#vid_5").slideDown(500, 'linear');
+        });
+    });	
+    */
 });
 
 //First get the  iframe URL
-var url = $('#YourIFrameID').attr('src');
+//var url = $('#YourIFrameID').attr('src');
 
 //Then assign the src to null, this then stops the video been playing
-$('#YourIFrameID').attr('src', '');
+//$('#YourIFrameID').attr('src', '');
 
 // Finally you reasign the URL back to your iframe, so when you hide and load it again you still have the link
-$('#YourIFrameID').attr('src', url);
+//$('#YourIFrameID').attr('src', url);
 //New video loading script
 
 
