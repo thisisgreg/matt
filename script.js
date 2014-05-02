@@ -26,7 +26,7 @@ $(function() {
 $(function() {
     $("li.vid-thumb").click(function(){
         //close current vid (slide up, set iframe src to null, set back to src)        
-        $('div.video:visible').slideUp(500, 'linear', function() {
+        $('div.video:visible').slideUp(250, 'linear', function() {
             var url = $(this).children('iframe').attr('src');
             $(this).children('iframe').attr('src', '');
             $(this).children('iframe').attr('src', url);
@@ -36,7 +36,7 @@ $(function() {
         var num = $(this).attr('id').split('_')[1];
         
         //open clicked vid (slide down)
-        $('div#vid_'+num).slideDown(500,'linear');
+        $('div#vid_'+num).slideDown(250,'linear');
     });
     
     /*      
@@ -66,6 +66,18 @@ $(function() {
         });
     });	
     */
+});
+
+$(function() {
+    $("#thumb_1")
+        .mouseover(function() { 
+            var src = $(this).attr("src").match(/[^\.]+/) + "images/thumbnails/ttrroll.jpg";
+            $(this).attr("src", src);
+        })
+        .mouseout(function() {
+            var src = $(this).attr("src").replace("images/thumbnails/ttrroll.jpg", "images/thumbnails/roof.jpg");
+            $(this).attr("src", src);
+        });
 });
 
 //First get the  iframe URL
