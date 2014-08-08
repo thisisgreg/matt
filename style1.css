@@ -277,9 +277,11 @@ body {
   height: 0px;
 }
 
+/*
 #navigation li {
   background-color: black;
 }
+*/
 
 #work p {
   clear: right;
@@ -316,14 +318,14 @@ body {
 
 #navigation a:active {
   color: white;
-  background-color: white;
+  background-color: rgba(0, 0, 0, .85);
 }
 
 #work ul {
   display: block;
-  overflow: hidden;
-  width: 1000px;
-  height: 140px;
+  /*overflow: hidden;*/
+  width: 900px;
+  height: 404px;
   margin-top: 30px;
   margin-bottom: 10px;
   margin: 0 auto;
@@ -341,8 +343,8 @@ body {
 }
 
 #work img {
-  width: 150px;
-  height: 90px;
+  width: 200px;
+  height: 120px;
   border:1px solid #ffffff;
 }
 
@@ -350,6 +352,9 @@ body {
   width: 200px;
   margin: 0 auto;
   float: right;
+  margin-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 #work li:hover {
